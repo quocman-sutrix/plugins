@@ -60,6 +60,7 @@ static NSString *const PLATFORM_CHANNEL = @"plugins.flutter.io/share";
     if ([@"share" isEqualToString:call.method]) {
       NSDictionary *arguments = [call arguments];
       NSString *shareText = arguments[@"text"];
+      NSString *shareLink = arguments[@"link"];
       NSString *shareSubject = arguments[@"subject"];
 
       if (shareText.length == 0) {
@@ -92,12 +93,14 @@ static NSString *const PLATFORM_CHANNEL = @"plugins.flutter.io/share";
 }
 
 + (void)share:(NSString *)shareText
+              link:(NSURL *)link
            subject:(NSString *)subject
     withController:(UIViewController *)controller
           atSource:(CGRect)origin {
   ShareData *data = [[ShareData alloc] initWithSubject:subject text:shareText];
+  NSURL *shareLink = [NSURL URLWithString:link];
   UIActivityViewController *activityViewController =
-      [[UIActivityViewController alloc] initWithActivityItems:@[ data ] applicationActivities:nil];
+      [[UIActivityViewController alloc] initWithActivityItems:@[ data, shareLink ] applicationActivities:nil];
   activityViewController.popoverPresentationController.sourceView = controller.view;
   if (!CGRectIsEmpty(origin)) {
     activityViewController.popoverPresentationController.sourceRect = origin;
