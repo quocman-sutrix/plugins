@@ -31,7 +31,7 @@ class Share {
   /// May throw [PlatformException] or [FormatException]
   /// from [MethodChannel].
   static Future<void> share(
-    String text, {
+    String text, String link, {
     String subject,
     Rect sharePositionOrigin,
   }) {
@@ -40,6 +40,7 @@ class Share {
     final Map<String, dynamic> params = <String, dynamic>{
       'text': text,
       'subject': subject,
+      'link': link,
     };
 
     if (sharePositionOrigin != null) {
