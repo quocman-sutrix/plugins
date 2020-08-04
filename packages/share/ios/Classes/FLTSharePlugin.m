@@ -105,6 +105,7 @@ static NSString *const PLATFORM_CHANNEL = @"plugins.flutter.io/share";
   activityViewController.popoverPresentationController.sourceView = controller.view;
   if (!CGRectIsEmpty(origin)) {
     activityViewController.popoverPresentationController.sourceRect = origin;
+    
   }
   [controller presentViewController:activityViewController animated:YES completion:nil];
 }
