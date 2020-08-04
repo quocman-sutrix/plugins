@@ -94,7 +94,7 @@ static NSString *const PLATFORM_CHANNEL = @"plugins.flutter.io/share";
 }
 
 + (void)share:(NSString *)shareText
-              link:(NSURL *)link
+              link:(NSString *)link
            subject:(NSString *)subject
     withController:(UIViewController *)controller
           atSource:(CGRect)origin {
